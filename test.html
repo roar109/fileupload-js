@@ -1,0 +1,29 @@
+<html>
+<head>
+  <title>something</title>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+  <script type="text/javascript" src="filesend.js"></script>
+</head>
+
+<body>
+  <input type="file" id="myfile" />
+  <input type="button" value="upload" id="uploadButton" onclick="myfileUpload.upload();" disabled="disabled"/>
+
+  <script  type="text/javascript">
+  //example
+  var myfileUpload = new FileSend({
+    formName : 'myForm',
+    action : 'http://localhost:8080/upload',
+    callback : 'callbackFunc',
+    fileTypes : ['jpeg','PNG'],
+    idUploadButton : 'uploadButton'
+  });
+
+  myfileUpload.observeElement($('#myfile'));
+
+  function callbackFunc(something){
+    console.log(something);
+  }
+  </script>
+</body>
+</html>
